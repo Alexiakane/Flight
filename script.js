@@ -33,9 +33,7 @@ fetch(url)
       // console.log(data);
 
       let url2 = "https://airportdb.io/api/v1/airport/";
-      url2 +=
-        arrival.toString() +
-        "?apiToken=65eacd634d3a962e1f14193e000540024c2fd4818d02b281a09cd5000d7c02f1a857bfabf62e595f1ba161b99a7f4059";
+      url2 += arrival.toString() + "?apiToken=65eacd634d3a962e1f14193e000540024c2fd4818d02b281a09cd5000d7c02f1a857bfabf62e595f1ba161b99a7f4059";
       // console.log(url2);
       fetch(url2)
         .then((response) => {
@@ -58,18 +56,15 @@ fetch(url)
             const para2 = document.createElement("p");
             const para3 = document.createElement("p");
             const para4 = document.createElement("a");
-           // const imgFlag = document.createElement("img");
+            const imgFlag = document.createElement("img");
             para1.className = "elemCountry";
-            para1.innerText =  country;
+            para1.innerText = country;
             countryVol.append(para1);
-            /*fetch(flags)
-            .then ((response) => {
-              return response.json();
-            })
-            .then(flagCode)
-            let flag = country;
-            imgFlag.scr = "https://flagcdn.com/32x24"+ flag +".png";*/
             
+            let flag = data2.iso_country;
+            imgFlag.src = "https://flagcdn.com/80x60/"+ flag.toLowerCase() +".png";
+            countryVol.append(imgFlag);
+
             para2.className = "elemMunicipality";
             para2.innerText = "Localisation : " + data2.municipality;
             countryVol.append(para2);
@@ -90,7 +85,7 @@ fetch(url)
         });
     });
   })
-  .catch(function () {});
+  .catch(function () { });
 
 container.append(divListeVols);
 body.append(container);
